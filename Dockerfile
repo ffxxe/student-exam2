@@ -4,9 +4,10 @@ ENV FLASK_APP=js_example
 WORKDIR /opt/flask
 COPY . .
 
-RUN . venv/bin/activate
-RUN pip install -e .
+RUN python3 -m venv venv && \
+    pip install --no-cache-dir -e . && \
+    chmod 755 ./flask.sh
 
 EXPOSE 5000
 
-ENTRYPOINT ["./flask", "run --host=0.0.0.0"]
+ENTRYPOINT ["./flask.sh"]
