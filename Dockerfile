@@ -5,6 +5,7 @@ WORKDIR /opt/flask
 COPY . .
 
 RUN python3 -m venv venv && \
+    . venv/bin/activate && \
     pip install --no-cache-dir -e . && \
     chmod 755 ./flask.sh
 
